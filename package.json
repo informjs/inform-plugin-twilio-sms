@@ -14,5 +14,15 @@
     "url": "git://github.com/informjs/inform-plugin-example.git"
   },
   "author": "Brandon R. Stoner <monokrome@mnokro.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inform-shared": "0.0.0"
+  },
+  "devDependencies": {
+    "coffee-script": "1.6.2",
+    "mocha": "1.8.2",
+    "chai": "1.5.0",
+    "sinon": "1.6.0",
+    "mockery": "1.4.0"
+  }
 }

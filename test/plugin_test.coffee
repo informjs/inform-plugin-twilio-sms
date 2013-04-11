@@ -1,4 +1,4 @@
-{Plugin} = require '../src/plugin'
+{Plugin} = require '../src'
 
 sinon = require 'sinon'
 {expect} = require 'chai'
@@ -14,8 +14,8 @@ exampleData =
   }
 
 describe 'Plugin', ->
-  it 'should not define #receive', ->
-    expect(Plugin.prototype.receive).to.equal undefined
+  it 'should define #receive', ->
+    expect(Plugin.prototype.receive).to.not.equal undefined
 
   describe '#constructor', ->
     it 'should set options to the first provided argument', sinon.test ->
