@@ -16,7 +16,8 @@
   "author": "Brandon R. Stoner <monokrome@mnokro.me>",
   "license": "MIT",
   "dependencies": {
-    "inform-shared": "0.0.0"
+    "inform-shared": "0.0.0",
+    "twilio": "1.1.0"
   },
   "devDependencies": {
     "coffee-script": "1.6.2",
