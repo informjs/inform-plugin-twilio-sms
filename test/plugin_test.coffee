@@ -1,17 +1,13 @@
 {Plugin} = require '../src'
-
-sinon = require 'sinon'
 {expect} = require 'chai'
 
+sinon = require 'sinon'
+_ = require 'lodash'
+
 exampleData =
-  options: {
-    example: 'options',
-    go: [
-      'here, ',
-      'here, ',
-      'or here'
-    ]
-  }
+  options:
+    sid: 'example_sid'
+    token: 'example_token'
 
 describe 'Plugin', ->
   it 'should define #receive', ->
@@ -22,4 +18,17 @@ describe 'Plugin', ->
       plugin = new Plugin exampleData.options
 
       expect(plugin.options).to.deep.equal exampleData.options
+
+    it 'should verify that authentication information has been provided', sinon.test ->
+      brokenPluginFactory = (without) ->
+        return ->
+          brokenData =  _.omit exampleData.options, without
+
+          new Plugin brokenData
+
+      withoutSID = brokenPluginFactory 'sid'
+      withoutToken = brokenPluginFactory 'token'
+
+      expect(withoutSID).to.throw Error
+      expect(withoutToken).to.throw Error
 
