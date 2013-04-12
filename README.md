@@ -1,6 +1,5 @@
-Example Plugin
+Twilio SMS Plugin
 ==============
 
-This is an example plugin which should be used as a base for creating new
-informjs plugins. It simply echos notifications to stdout.
+Leverage the power of Twilio to send SMS notifications over InformJS.
 

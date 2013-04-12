@@ -2,7 +2,7 @@
 
 class OptionsError extends Error
 
-class ExamplePlugin extends Plugin
+class TwilioPlugin extends Plugin
   constructor: (@options) ->
     if !@options.sid?
       throw new OptionsError 'An SID must be provided to twilio-sms'
@@ -15,5 +15,5 @@ class ExamplePlugin extends Plugin
 
   receive: (message) -> console.log message
 
-module.exports.Plugin = ExamplePlugin
+module.exports.Plugin = TwilioPlugin
 
