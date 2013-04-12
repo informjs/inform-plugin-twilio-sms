@@ -10,6 +10,9 @@ class ExamplePlugin extends Plugin
     if !@options.token?
       throw new OptionsError 'A token must be provided to twilio-sms'
 
+    if !@options.destination?
+      throw new OptionsError 'A destination must be provided to twilio-sms'
+
   receive: (message) -> console.log message
 
 module.exports.Plugin = ExamplePlugin

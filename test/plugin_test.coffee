@@ -8,6 +8,7 @@ exampleData =
   options:
     sid: 'example_sid'
     token: 'example_token'
+    destination: '1 (801) 448-1862'
 
 describe 'Plugin', ->
   it 'should define #receive', ->
@@ -19,7 +20,7 @@ describe 'Plugin', ->
 
       expect(plugin.options).to.deep.equal exampleData.options
 
-    it 'should verify that authentication information has been provided', sinon.test ->
+    it 'should verify that required options has been provided', sinon.test ->
       brokenPluginFactory = (without) ->
         return ->
           brokenData =  _.omit exampleData.options, without
@@ -28,7 +29,9 @@ describe 'Plugin', ->
 
       withoutSID = brokenPluginFactory 'sid'
       withoutToken = brokenPluginFactory 'token'
+      withoutDestination = brokenPluginFactory 'destination'
 
       expect(withoutSID).to.throw Error
       expect(withoutToken).to.throw Error
+      expect(withoutDestination).to.throw Error
 
