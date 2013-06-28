@@ -15,6 +15,9 @@ class TwilioPlugin extends Plugin
     if !@options.destination?
       throw new OptionsError 'A destination must be provided to twilio-sms'
 
+    if !@options.from?
+      throw new OptionsError 'A from option must be provided to twilio-sms'
+
     @client = new twilio.RestClient @options.sid, @options.token
 
   receive: (message) -> console.log message

@@ -11,6 +11,7 @@ exampleData =
     sid: 'example_sid'
     token: 'example_token'
     destination: '1 (801) 448-1862'
+    from: '1 (801) 448-1862'
 
 describe 'Plugin', ->
   it 'should define #receive', ->
@@ -32,10 +33,12 @@ describe 'Plugin', ->
       withoutSID = brokenPluginFactory 'sid'
       withoutToken = brokenPluginFactory 'token'
       withoutDestination = brokenPluginFactory 'destination'
+      withoutFrom = brokenPluginFactory 'from'
 
       expect(withoutSID).to.throw Error
       expect(withoutToken).to.throw Error
       expect(withoutDestination).to.throw Error
+      expect(withoutFrom).to.throw Error
 
     it 'should create a Twilio client', sinon.test ->
       spy = @spy twilio, 'RestClient'
