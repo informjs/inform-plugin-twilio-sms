@@ -1,4 +1,6 @@
 {Plugin} = require '../src'
+twilio = require 'twilio'
+
 {expect} = require 'chai'
 
 sinon = require 'sinon'
@@ -35,3 +37,11 @@ describe 'Plugin', ->
       expect(withoutToken).to.throw Error
       expect(withoutDestination).to.throw Error
 
+    it 'should create a Twilio client', sinon.test ->
+      spy = @spy twilio, 'RestClient'
+
+      new Plugin exampleData.options
+
+      expect(spy.calledOnce).to.be.true
+      expect(spy.calledWithNew()).to.be.true
+      expect(spy.calledWith exampleData.options.sid, exampleData.options.token).to.be.true

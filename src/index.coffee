@@ -1,3 +1,5 @@
+twilio = require 'twilio'
+
 {Plugin} = require 'inform-shared'
 
 class OptionsError extends Error
@@ -12,6 +14,8 @@ class TwilioPlugin extends Plugin
 
     if !@options.destination?
       throw new OptionsError 'A destination must be provided to twilio-sms'
+
+    @client = new twilio.RestClient @options.sid, @options.token
 
   receive: (message) -> console.log message
 
