@@ -20,7 +20,11 @@ class TwilioPlugin extends Plugin
 
     @client = new twilio.RestClient @options.sid, @options.token
 
-  receive: (message) -> console.log message
+  receive: (message) =>
+    @client.sms.messages.create
+      to: @options.destination
+      from: @options.from
+      body: message
 
 module.exports.Plugin = TwilioPlugin
 

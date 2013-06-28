@@ -48,3 +48,18 @@ describe 'Plugin', ->
       expect(spy.calledOnce).to.be.true
       expect(spy.calledWithNew()).to.be.true
       expect(spy.calledWith exampleData.options.sid, exampleData.options.token).to.be.true
+
+  describe '#receive', ->
+    plugin = new Plugin exampleData.options
+
+    it 'should create an SMS message with Twilio', sinon.test ->
+      spy = @spy plugin.client.sms.messages, 'create'
+
+      message = 'This is a test message.'
+      plugin.receive message
+
+      expect(spy.calledOnce).to.be.true
+      expect(spy.firstCall.args[0]).to.deep.equal
+        to: exampleData.options.destination
+        from: exampleData.options.from
+        body: message
