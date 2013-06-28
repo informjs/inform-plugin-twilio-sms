@@ -22,7 +22,7 @@ describe 'Plugin', ->
 
       expect(plugin.options).to.deep.equal exampleData.options
 
-    it 'should verify that required options has been provided', sinon.test ->
+    it 'should verify that required options have been provided', sinon.test ->
       brokenPluginFactory = (without) ->
         return ->
           brokenData =  _.omit exampleData.options, without
