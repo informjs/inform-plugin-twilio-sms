@@ -1,6 +1,6 @@
 {
   "name": "inform-plugin-twilio-sms",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Leverage the power of Twilio to send SMS notifications over InformJS.",
   "main": "lib/inform-plugin-twilio-sms/index.js",
   "directories": {
