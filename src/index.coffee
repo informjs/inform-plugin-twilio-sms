@@ -27,4 +27,3 @@ class TwilioPlugin extends Plugin
       body: message
 
 module.exports.Plugin = TwilioPlugin
-
